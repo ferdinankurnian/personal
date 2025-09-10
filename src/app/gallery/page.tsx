@@ -1,7 +1,12 @@
 "use client";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
-import PixelTransition from "@/components/PixelTransition";
+import dynamic from "next/dynamic";
+
+const PixelTransition = dynamic(
+  () => import("@/components/PixelTransition"),
+  { ssr: false },
+);
 
 export default function Gallery() {
   return (
