@@ -108,7 +108,7 @@ export default function Home() {
             </CardContent>
           </Card>
           <div className="grow grid md:grid-cols-2 gap-4">
-            <Card className="md:col-span-2 aspect-21/9">
+            <Card className="md:col-span-2 md:aspect-21/9">
               <CardContent className="grid md:grid-cols-2 gap-6 h-full">
                 <div className="rounded-sm overflow-hidden relative h-full">
                   {/*w-[370px] h-[275px]*/}

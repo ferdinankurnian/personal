@@ -30,7 +30,7 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="flex flex-row p-2 space-x-2 z-50 fixed dark:bg-black/40 rounded-xl border backdrop-blur-sm top-2 left-1/2 -translate-x-1/2">
+    <div className="flex flex-row justify-between md:justify-center p-2 space-x-2 z-50 w-screen md:w-fit fixed dark:bg-black/40 rounded-xl border backdrop-blur-sm top-2 left-1/2 -translate-x-1/2">
       <div className="flex flex-row items-center">
         {navLinks().map((link) => (
           <Link href={link.address} key={link.address}>
