@@ -13,7 +13,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import { Switch } from "@/components/ui/switch";
 import { ThemeSwitch } from "@/components/theme-switch";
 
 const navLinks = () => [
@@ -75,7 +74,7 @@ function SheetMenu() {
       </SheetTrigger>
       <SheetContent side="right">
         <SheetHeader className="px-0">
-          <SheetTitle className="pl-6 mb-4">Menu</SheetTitle>
+          <SheetTitle className="pl-6 -mt-1 mb-2">Menu</SheetTitle>
           <Separator />
           <div className="flex flex-col -mt-[0.4rem]">
             <Core style="mobile" />

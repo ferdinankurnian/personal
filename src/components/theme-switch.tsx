@@ -27,7 +27,7 @@ export function ThemeSwitch() {
       <div
         className={cn(
           "h-6 w-11 rounded-full transition-colors duration-200",
-          theme === "dark" ? "bg-gray-700" : "bg-gray-200" // Darker track for dark mode
+          theme === "dark" ? "bg-neutral-700" : "bg-neutral-200", // Darker track for dark mode
         )}
       ></div>
 
@@ -37,13 +37,13 @@ export function ThemeSwitch() {
           "absolute top-1/2 -translate-y-1/2 h-5 w-5 rounded-full shadow-md transition-transform duration-200 flex items-center justify-center",
           theme === "dark"
             ? "translate-x-[22px] bg-white" // Move to right, white background
-            : "translate-x-[2px] bg-white" // Move to left, white background
+            : "translate-x-[2px] bg-white", // Move to left, white background
         )}
       >
         {theme === "light" ? (
-          <Sun className="h-3 w-3 text-yellow-500" />
+          <Sun className="h-3 w-3 text-neutral-500" />
         ) : (
-          <Moon className="h-3 w-3 text-gray-700" />
+          <Moon className="h-3 w-3 text-neutral-700" />
         )}
       </div>
     </div>
