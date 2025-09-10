@@ -1,9 +1,6 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
-import { Input } from "@/components/ui/input";
 import PixelTransition from "@/components/PixelTransition";
 
 export default function Gallery() {
@@ -14,7 +11,7 @@ export default function Gallery() {
         <div className="px-4 md:px-0">
           <h1 className="text-4xl font-bold">Gallery</h1>
         </div>
-        <div className="grid grid-cols-3 bg-neutral-200 dark:bg-background gap-1 p-1 md:grid-cols-4">
+        <div className="grid grid-cols-3 bg-background gap-1 p-1 md:grid-cols-4">
           {Array.from({ length: 32 }).map((_, index) => (
             <PixelTransition
               key={index}
