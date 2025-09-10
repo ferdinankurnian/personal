@@ -1,26 +1,34 @@
 "use client";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
-import dynamic from "next/dynamic";
-
-const PixelTransition = dynamic(
-  () => import("@/components/PixelTransition"),
-  { ssr: false },
-);
+import { ResponsiveDialog } from "@/components/responsive-dialog";
 
 export default function Gallery() {
   return (
     <div className="h-screen">
       <Navbar />
-      <div className="max-w-7xl p-8 px-0 md:px-8 mx-auto pt-32 space-y-8">
+      <div className="max-w-7xl p-8 px-0 md:px-8 mx-auto py-26 space-y-8">
         <div className="px-4 md:px-0">
           <h1 className="text-4xl font-bold">Gallery</h1>
         </div>
-        <div className="grid grid-cols-3 bg-background gap-1 p-1 md:grid-cols-4">
+        <div className="grid grid-cols-3 bg-background gap-1 md:gap-2 p-1 md:grid-cols-4">
           {Array.from({ length: 32 }).map((_, index) => (
-            <PixelTransition
+            <ResponsiveDialog
               key={index}
-              firstContent={
+              title={`Image ${index + 1}`}
+              description="This is a beautiful image from my gallery."
+              content={
+                <Image
+                  src="/iydheko.png"
+                  alt="Iydheko"
+                  className="w-full h-full object-cover rounded-md"
+                  layout="responsive"
+                  width={300}
+                  height={300}
+                />
+              }
+            >
+              <div className="hover:brightness-50 cursor-pointer">
                 <Image
                   src="/iydheko.png"
                   alt="Iydheko"
@@ -29,19 +37,8 @@ export default function Gallery() {
                   width={300}
                   height={300}
                 />
-              }
-              secondContent={
-                <div className="w-full h-full grid place-items-center bg-[#37729A50]">
-                  <p className="m-2 text-white text-2xl font-bold">
-                    The First Journey
-                  </p>
-                </div>
-              }
-              gridSize={12}
-              pixelColor="#7CB0DA"
-              animationStepDuration={0.4}
-              className="custom-pixel-card"
-            />
+              </div>
+            </ResponsiveDialog>
           ))}
         </div>
       </div>

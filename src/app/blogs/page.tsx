@@ -11,7 +11,7 @@ export default function Blogs() {
   return (
     <div className="h-screen">
       <Navbar />
-      <div className="max-w-7xl p-8 mx-auto pt-32 space-y-8">
+      <div className="max-w-7xl p-4 mx-auto py-26 space-y-8">
         <div className="space-y-2">
           <h1 className="text-4xl font-bold mb-8">Blogs</h1>
           <Card>
