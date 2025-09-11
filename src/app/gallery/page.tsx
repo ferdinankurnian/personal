@@ -16,7 +16,7 @@ export default function Gallery() {
             <ResponsiveDialog
               key={index}
               content={
-                <div className="grid md:grid-cols-2 overflow-auto px-4">
+                <div className="grid md:grid-cols-2 overflow-auto px-4 pt-4 md:p-0">
                   <Image
                     src="/iydheko.png"
                     alt="Iydheko"

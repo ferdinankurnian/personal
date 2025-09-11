@@ -106,7 +106,8 @@ function Core({ style }: CoreProps) {
             <div
               className={cn(
                 "px-6 py-3 hover:bg-accent text-lg hover:pl-8 transition-all duration-300",
-                pathname === link.address
+                (pathname === link.address ||
+                (link.address !== "/" && pathname.startsWith(link.address)))
                   ? "font-bold text-black dark:text-white"
                   : "font-normal text-primary/75",
               )}
@@ -128,7 +129,9 @@ function Core({ style }: CoreProps) {
             variant="nav_link"
             size="nav"
             className={cn(
-              pathname === link.address && "text-black dark:text-white",
+              (pathname === link.address ||
+                (link.address !== "/" && pathname.startsWith(link.address))) &&
+                "text-black dark:text-white",
             )}
           >
             {link.title}

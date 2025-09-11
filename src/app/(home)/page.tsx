@@ -61,7 +61,7 @@ const socialLinks = [
   },
   {
     name: "Bluesky",
-    url: "https://bsky.app/profile/iydheko.bsky.social",
+    url: "https://bsky.app/profile/iydheko.site",
     icon: `<svg
       xmlns="http://www.w3.org/2000/svg"
       width="256"
