@@ -15,17 +15,23 @@ export default function Gallery() {
           {Array.from({ length: 32 }).map((_, index) => (
             <ResponsiveDialog
               key={index}
-              title={`Image ${index + 1}`}
-              description="This is a beautiful image from my gallery."
               content={
-                <Image
-                  src="/iydheko.png"
-                  alt="Iydheko"
-                  className="w-full h-full object-cover rounded-md"
-                  layout="responsive"
-                  width={300}
-                  height={300}
-                />
+                <div className="grid md:grid-cols-2 overflow-auto px-4">
+                  <Image
+                    src="/iydheko.png"
+                    alt="Iydheko"
+                    className="w-full h-full object-cover rounded-md"
+                    layout="responsive"
+                    width={300}
+                    height={300}
+                  />
+                  <div className="flex flex-col items-center justify-center">
+                    <h2 className="text-xl font-bold">Image {index + 1}</h2>
+                    <p className="text-sm text-muted-foreground">
+                      This is a beautiful image from my gallery.
+                    </p>
+                  </div>
+                </div>
               }
             >
               <div className="hover:brightness-50 cursor-pointer">
