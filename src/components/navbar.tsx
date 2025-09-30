@@ -39,15 +39,25 @@ export default function Navbar() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="flex flex-row justify-between md:justify-center p-2 space-x-2 z-50 w-screen md:w-fit fixed dark:bg-black/40 md:rounded-xl border-b md:border backdrop-blur-sm md:top-2 left-1/2 -translate-x-1/2">
+    <div className="grid grid-cols-2 md:grid-cols-3 p-2 space-x-2 z-50 w-screen fixed dark:bg-black/40 border-b backdrop-blur-sm">
       <h1 className="text-lg font-bold text-primary md:hidden my-auto pl-2">
         {navLinks().find((link) => link.address === pathname)?.title ||
           pathname}
       </h1>
-      <div className="hidden md:flex flex-row items-center">
+
+      <Link href="/" className="hidden md:block">
+        <Button
+          variant="nav_link"
+          size="nav"
+          className="text-black dark:text-white font-bold text-xl"
+        >
+          Ferdinan Iydheko
+        </Button>
+      </Link>
+      <div className="hidden md:flex flex-row items-center justify-center">
         <Core />
       </div>
-      <div className="flex flex-row gap-2">
+      <div className="flex flex-row gap-2 justify-end">
         <Button
           variant="outline"
           size="icon"
@@ -106,8 +116,8 @@ function Core({ style }: CoreProps) {
             <div
               className={cn(
                 "px-6 py-3 hover:bg-accent text-lg hover:pl-8 transition-all duration-300",
-                (pathname === link.address ||
-                (link.address !== "/" && pathname.startsWith(link.address)))
+                pathname === link.address ||
+                  (link.address !== "/" && pathname.startsWith(link.address))
                   ? "font-bold text-black dark:text-white"
                   : "font-normal text-primary/75",
               )}

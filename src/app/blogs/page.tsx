@@ -1,4 +1,3 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/navbar";
@@ -6,8 +5,14 @@ import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import Link from "next/link";
+import { getPosts } from "@/lib/marble";
+import { Post } from "@/lib/types";
+import { formatDistanceToNow } from "date-fns";
 
-export default function Blogs() {
+export default async function Blogs() {
+  const postsData = await getPosts();
+  const posts: Post[] = postsData ? postsData.posts : [];
+
   return (
     <div className="h-screen">
       <Navbar />
@@ -38,28 +43,32 @@ export default function Blogs() {
           </Card>
         </div>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {Array.from({ length: 12 }).map((_, index) => (
-            <Link key={index} href={`/blogs/${index}`}>
+          {posts.map((post) => (
+            <Link key={post.id} href={`/blogs/${post.slug}`}>
               <Card className="p-0 overflow-hidden hover:-translate-y-1 transition-transform duration-100">
                 <CardContent className="p-4 space-y-4">
-                  <Image
-                    src="/iydheko.png"
-                    alt="Iydheko"
-                    className="w-full h-full object-cover rounded-lg aspect-16/9"
-                    layout="responsive"
-                    width={300}
-                    height={300}
-                  />
-                  <div className="p-2 space-y-4">
-                    <h1 className="text-xl font-semibold line-clamp-2 ">
-                      The title of a post is really-really good and interesting
+                  {post.coverImage ? (
+                    <Image
+                      src={post.coverImage}
+                      alt={post.title}
+                      className="w-full object-cover rounded-lg aspect-16/9"
+                      width={300}
+                      height={300}
+                    />
+                  ) : (
+                    <div className="w-full bg-accent rounded-lg aspect-16/9" />
+                  )}
+                  <div className="p-2 space-y-3">
+                    <h1 className="text-xl font-semibold line-clamp-2">
+                      {post.title}
                     </h1>
-                    <p className="text-black/60 dark:text-white/75 line-clamp-2 text-md">
-                      Ratione distinctio suscipit expedita rerum unde laudantium
-                      ipsam vero vitae nemo natus.
+                    <p className="text-black/60 dark:text-white/75 line-clamp-2 text-sm">
+                      {post.description}
                     </p>
                     <p className="text-black/50 dark:text-white/75 text-sm">
-                      2 hour ago
+                      {formatDistanceToNow(new Date(post.publishedAt), {
+                        addSuffix: true,
+                      })}
                     </p>
                   </div>
                 </CardContent>
