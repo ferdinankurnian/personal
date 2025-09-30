@@ -1,8 +1,5 @@
 {
   "name": "personal",
   "compatibility_date": "2025-09-30",
-  "assets": {
-    "directory": "./dist",
-    "not_found_handling": "single-page-application"
-  }
+  "main": ".vercel/output/static/_worker.js"
 }
