@@ -1,5 +1,5 @@
 {
   "name": "personal",
   "compatibility_date": "2025-09-30",
-  "main": ".vercel/output/static/_worker.js"
+  "pages_build_output_dir": ".vercel/output/static",
 }
