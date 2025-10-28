@@ -1,0 +1,5 @@
+name = "my-personal"
+compatibility_date = "2025-10-26"
+
+[pages]
+build_output_dir = "dist"
