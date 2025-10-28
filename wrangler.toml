@@ -1,5 +1,4 @@
 name = "personal"
 compatibility_date = "2025-10-26"
 
-[pages]
-build_output_dir = "dist"
+pages_build_output_dir = ".output/public"
