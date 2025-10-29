@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import Marquee from "react-fast-marquee";
 
-export const Route = createFileRoute('/')({ component: App, ssr: false })
+export const Route = createFileRoute('/')({ component: App })
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
         </div>
         <div className="relative max-w-5xl mx-auto">
           <div className="flex flex-col items-center justify-center gap-6">
-            <h1 className="text-5xl md:text-7xl mb-4 font-black [letter-spacing:-0.08em]">
+            <h1 className="text-5xl md:text-7xl mb-4 font-black [letter-spacing:0.04em]">
               <span>THIS IS</span>{' '}
               <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                 MEE

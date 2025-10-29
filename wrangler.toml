@@ -1,4 +1,0 @@
-name = "personal"
-compatibility_date = "2025-10-26"
-
-pages_build_output_dir = ".output/public"

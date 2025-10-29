@@ -15,6 +15,8 @@ import { Route as IniAdminYhIndexRouteImport } from './routes/ini-admin-yh/index
 import { Route as GalleryIndexRouteImport } from './routes/gallery/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as ProjectsProjectIdRouteImport } from './routes/projects/$projectId'
+import { Route as BlogCatIdRouteImport } from './routes/blog/$catId'
+import { Route as BlogPostSlugRouteImport } from './routes/blog/post.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,66 +48,90 @@ const ProjectsProjectIdRoute = ProjectsProjectIdRouteImport.update({
   path: '/projects/$projectId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogCatIdRoute = BlogCatIdRouteImport.update({
+  id: '/blog/$catId',
+  path: '/blog/$catId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogPostSlugRoute = BlogPostSlugRouteImport.update({
+  id: '/blog/post/$slug',
+  path: '/blog/post/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blog/$catId': typeof BlogCatIdRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/blog': typeof BlogIndexRoute
   '/gallery': typeof GalleryIndexRoute
   '/ini-admin-yh': typeof IniAdminYhIndexRoute
   '/projects': typeof ProjectsIndexRoute
+  '/blog/post/$slug': typeof BlogPostSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blog/$catId': typeof BlogCatIdRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/blog': typeof BlogIndexRoute
   '/gallery': typeof GalleryIndexRoute
   '/ini-admin-yh': typeof IniAdminYhIndexRoute
   '/projects': typeof ProjectsIndexRoute
+  '/blog/post/$slug': typeof BlogPostSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/blog/$catId': typeof BlogCatIdRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/blog/': typeof BlogIndexRoute
   '/gallery/': typeof GalleryIndexRoute
   '/ini-admin-yh/': typeof IniAdminYhIndexRoute
   '/projects/': typeof ProjectsIndexRoute
+  '/blog/post/$slug': typeof BlogPostSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/blog/$catId'
     | '/projects/$projectId'
     | '/blog'
     | '/gallery'
     | '/ini-admin-yh'
     | '/projects'
+    | '/blog/post/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/blog/$catId'
     | '/projects/$projectId'
     | '/blog'
     | '/gallery'
     | '/ini-admin-yh'
     | '/projects'
+    | '/blog/post/$slug'
   id:
     | '__root__'
     | '/'
+    | '/blog/$catId'
     | '/projects/$projectId'
     | '/blog/'
     | '/gallery/'
     | '/ini-admin-yh/'
     | '/projects/'
+    | '/blog/post/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlogCatIdRoute: typeof BlogCatIdRoute
   ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
   BlogIndexRoute: typeof BlogIndexRoute
   GalleryIndexRoute: typeof GalleryIndexRoute
   IniAdminYhIndexRoute: typeof IniAdminYhIndexRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
+  BlogPostSlugRoute: typeof BlogPostSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -152,16 +178,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsProjectIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/$catId': {
+      id: '/blog/$catId'
+      path: '/blog/$catId'
+      fullPath: '/blog/$catId'
+      preLoaderRoute: typeof BlogCatIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/post/$slug': {
+      id: '/blog/post/$slug'
+      path: '/blog/post/$slug'
+      fullPath: '/blog/post/$slug'
+      preLoaderRoute: typeof BlogPostSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlogCatIdRoute: BlogCatIdRoute,
   ProjectsProjectIdRoute: ProjectsProjectIdRoute,
   BlogIndexRoute: BlogIndexRoute,
   GalleryIndexRoute: GalleryIndexRoute,
   IniAdminYhIndexRoute: IniAdminYhIndexRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
+  BlogPostSlugRoute: BlogPostSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
