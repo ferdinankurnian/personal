@@ -24,6 +24,9 @@ export const Route = createFileRoute('/blog/')({
     const data = await getPosts();
     return data;
   },
+  handle: {
+    breadcrumb: () => <span>Blog</span>,
+  },
 })
 
 function RouteComponent() {

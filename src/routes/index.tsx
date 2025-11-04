@@ -1,7 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router'
 import Marquee from "react-fast-marquee";
 
-export const Route = createFileRoute('/')({ component: App })
+export const Route = createFileRoute('/')({ 
+  component: App,
+  handle: {
+    breadcrumb: () => <span>Public</span>,
+  },
+})
 
 function App() {
 

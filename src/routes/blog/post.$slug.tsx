@@ -10,6 +10,9 @@ export const Route = createFileRoute("/blog/post/$slug")({
     const data = await getSinglePost({ data: params.slug });
     return data;
   },
+  handle: {
+    breadcrumb: (loaderData) => <span>{loaderData.post.title}</span>,
+  },
 });
 
 function RouteComponent() {

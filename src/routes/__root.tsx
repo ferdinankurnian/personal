@@ -1,7 +1,13 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+import {
+  HeadContent,
+  Scripts,
+  createRootRoute,
+  useRouterState,
+  Outlet,
+} from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from '@/components/theme-provider'
 
 import Header from '../components/Header'
 
@@ -17,47 +23,79 @@ export const Route = createRootRoute({
         name: 'viewport',
         content: 'width=device-width, initial-scale=1',
       },
-      {
-        title: 'Ferdinan Iydheko',
-      },
     ],
     links: [
       {
         rel: 'stylesheet',
         href: appCss,
       },
+      {
+        rel: 'icon',
+        href: '/favicon.ico',
+      },
     ],
   }),
-
-  shellComponent: RootDocument,
+  component: RootComponent,
 })
 
-function RootDocument({ children }: { children: React.ReactNode }) {
+function RootComponent() {
+
+  const { location } = useRouterState()
+
+  const isAdminRoute = location.pathname.startsWith('/ah-ini-admin-yh')
+
   return (
+
     <html lang="en">
+
       <head>
+
         <HeadContent />
+
       </head>
+
       <body>
+
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-          <Header />
-          {children}
+
+          {!isAdminRoute && <Header />}
+
+          <Outlet />
+
         </ThemeProvider>
+
         {process.env.NODE_ENV !== 'production' ? (
+
           <TanStackDevtools
+
             config={{
+
               position: 'bottom-right',
+
             }}
+
             plugins={[
+
               {
+
                 name: 'Tanstack Router',
+
                 render: <TanStackRouterDevtoolsPanel />,
+
               },
+
             ]}
+
           />
+
         ) : null}
+
         <Scripts />
+
       </body>
+
     </html>
+
   )
+
 }

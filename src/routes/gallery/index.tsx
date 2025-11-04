@@ -10,6 +10,9 @@ import {
 
 export const Route = createFileRoute('/gallery/')({
   component: RouteComponent,
+  handle: {
+    breadcrumb: () => <span>Gallery</span>,
+  },
 })
 
 function RouteComponent() {

@@ -11,12 +11,19 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects/index'
-import { Route as IniAdminYhIndexRouteImport } from './routes/ini-admin-yh/index'
 import { Route as GalleryIndexRouteImport } from './routes/gallery/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as ProjectsProjectIdRouteImport } from './routes/projects/$projectId'
 import { Route as BlogCatIdRouteImport } from './routes/blog/$catId'
+import { Route as AdminAhIniAdminYhRouteRouteImport } from './routes/_admin/ah-ini-admin-yh/route'
 import { Route as BlogPostSlugRouteImport } from './routes/blog/post.$slug'
+import { Route as AdminAhIniAdminYhDashboardRouteImport } from './routes/_admin/ah-ini-admin-yh/dashboard'
+import { Route as AdminAhIniAdminYhSocialMediaIndexRouteImport } from './routes/_admin/ah-ini-admin-yh/social-media/index'
+import { Route as AdminAhIniAdminYhSettingsIndexRouteImport } from './routes/_admin/ah-ini-admin-yh/settings/index'
+import { Route as AdminAhIniAdminYhProjectsIndexRouteImport } from './routes/_admin/ah-ini-admin-yh/projects/index'
+import { Route as AdminAhIniAdminYhGalleryIndexRouteImport } from './routes/_admin/ah-ini-admin-yh/gallery/index'
+import { Route as AdminAhIniAdminYhFursonaIndexRouteImport } from './routes/_admin/ah-ini-admin-yh/fursona/index'
+import { Route as AdminAhIniAdminYhProjectsAddRouteImport } from './routes/_admin/ah-ini-admin-yh/projects/add'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -26,11 +33,6 @@ const IndexRoute = IndexRouteImport.update({
 const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
   id: '/projects/',
   path: '/projects/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IniAdminYhIndexRoute = IniAdminYhIndexRouteImport.update({
-  id: '/ini-admin-yh/',
-  path: '/ini-admin-yh/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryIndexRoute = GalleryIndexRouteImport.update({
@@ -53,83 +55,172 @@ const BlogCatIdRoute = BlogCatIdRouteImport.update({
   path: '/blog/$catId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminAhIniAdminYhRouteRoute = AdminAhIniAdminYhRouteRouteImport.update({
+  id: '/_admin/ah-ini-admin-yh',
+  path: '/ah-ini-admin-yh',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogPostSlugRoute = BlogPostSlugRouteImport.update({
   id: '/blog/post/$slug',
   path: '/blog/post/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminAhIniAdminYhDashboardRoute =
+  AdminAhIniAdminYhDashboardRouteImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => AdminAhIniAdminYhRouteRoute,
+  } as any)
+const AdminAhIniAdminYhSocialMediaIndexRoute =
+  AdminAhIniAdminYhSocialMediaIndexRouteImport.update({
+    id: '/social-media/',
+    path: '/social-media/',
+    getParentRoute: () => AdminAhIniAdminYhRouteRoute,
+  } as any)
+const AdminAhIniAdminYhSettingsIndexRoute =
+  AdminAhIniAdminYhSettingsIndexRouteImport.update({
+    id: '/settings/',
+    path: '/settings/',
+    getParentRoute: () => AdminAhIniAdminYhRouteRoute,
+  } as any)
+const AdminAhIniAdminYhProjectsIndexRoute =
+  AdminAhIniAdminYhProjectsIndexRouteImport.update({
+    id: '/projects/',
+    path: '/projects/',
+    getParentRoute: () => AdminAhIniAdminYhRouteRoute,
+  } as any)
+const AdminAhIniAdminYhGalleryIndexRoute =
+  AdminAhIniAdminYhGalleryIndexRouteImport.update({
+    id: '/gallery/',
+    path: '/gallery/',
+    getParentRoute: () => AdminAhIniAdminYhRouteRoute,
+  } as any)
+const AdminAhIniAdminYhFursonaIndexRoute =
+  AdminAhIniAdminYhFursonaIndexRouteImport.update({
+    id: '/fursona/',
+    path: '/fursona/',
+    getParentRoute: () => AdminAhIniAdminYhRouteRoute,
+  } as any)
+const AdminAhIniAdminYhProjectsAddRoute =
+  AdminAhIniAdminYhProjectsAddRouteImport.update({
+    id: '/projects/add',
+    path: '/projects/add',
+    getParentRoute: () => AdminAhIniAdminYhRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ah-ini-admin-yh': typeof AdminAhIniAdminYhRouteRouteWithChildren
   '/blog/$catId': typeof BlogCatIdRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/blog': typeof BlogIndexRoute
   '/gallery': typeof GalleryIndexRoute
-  '/ini-admin-yh': typeof IniAdminYhIndexRoute
   '/projects': typeof ProjectsIndexRoute
+  '/ah-ini-admin-yh/dashboard': typeof AdminAhIniAdminYhDashboardRoute
   '/blog/post/$slug': typeof BlogPostSlugRoute
+  '/ah-ini-admin-yh/projects/add': typeof AdminAhIniAdminYhProjectsAddRoute
+  '/ah-ini-admin-yh/fursona': typeof AdminAhIniAdminYhFursonaIndexRoute
+  '/ah-ini-admin-yh/gallery': typeof AdminAhIniAdminYhGalleryIndexRoute
+  '/ah-ini-admin-yh/projects': typeof AdminAhIniAdminYhProjectsIndexRoute
+  '/ah-ini-admin-yh/settings': typeof AdminAhIniAdminYhSettingsIndexRoute
+  '/ah-ini-admin-yh/social-media': typeof AdminAhIniAdminYhSocialMediaIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ah-ini-admin-yh': typeof AdminAhIniAdminYhRouteRouteWithChildren
   '/blog/$catId': typeof BlogCatIdRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/blog': typeof BlogIndexRoute
   '/gallery': typeof GalleryIndexRoute
-  '/ini-admin-yh': typeof IniAdminYhIndexRoute
   '/projects': typeof ProjectsIndexRoute
+  '/ah-ini-admin-yh/dashboard': typeof AdminAhIniAdminYhDashboardRoute
   '/blog/post/$slug': typeof BlogPostSlugRoute
+  '/ah-ini-admin-yh/projects/add': typeof AdminAhIniAdminYhProjectsAddRoute
+  '/ah-ini-admin-yh/fursona': typeof AdminAhIniAdminYhFursonaIndexRoute
+  '/ah-ini-admin-yh/gallery': typeof AdminAhIniAdminYhGalleryIndexRoute
+  '/ah-ini-admin-yh/projects': typeof AdminAhIniAdminYhProjectsIndexRoute
+  '/ah-ini-admin-yh/settings': typeof AdminAhIniAdminYhSettingsIndexRoute
+  '/ah-ini-admin-yh/social-media': typeof AdminAhIniAdminYhSocialMediaIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_admin/ah-ini-admin-yh': typeof AdminAhIniAdminYhRouteRouteWithChildren
   '/blog/$catId': typeof BlogCatIdRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/blog/': typeof BlogIndexRoute
   '/gallery/': typeof GalleryIndexRoute
-  '/ini-admin-yh/': typeof IniAdminYhIndexRoute
   '/projects/': typeof ProjectsIndexRoute
+  '/_admin/ah-ini-admin-yh/dashboard': typeof AdminAhIniAdminYhDashboardRoute
   '/blog/post/$slug': typeof BlogPostSlugRoute
+  '/_admin/ah-ini-admin-yh/projects/add': typeof AdminAhIniAdminYhProjectsAddRoute
+  '/_admin/ah-ini-admin-yh/fursona/': typeof AdminAhIniAdminYhFursonaIndexRoute
+  '/_admin/ah-ini-admin-yh/gallery/': typeof AdminAhIniAdminYhGalleryIndexRoute
+  '/_admin/ah-ini-admin-yh/projects/': typeof AdminAhIniAdminYhProjectsIndexRoute
+  '/_admin/ah-ini-admin-yh/settings/': typeof AdminAhIniAdminYhSettingsIndexRoute
+  '/_admin/ah-ini-admin-yh/social-media/': typeof AdminAhIniAdminYhSocialMediaIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/ah-ini-admin-yh'
     | '/blog/$catId'
     | '/projects/$projectId'
     | '/blog'
     | '/gallery'
-    | '/ini-admin-yh'
     | '/projects'
+    | '/ah-ini-admin-yh/dashboard'
     | '/blog/post/$slug'
+    | '/ah-ini-admin-yh/projects/add'
+    | '/ah-ini-admin-yh/fursona'
+    | '/ah-ini-admin-yh/gallery'
+    | '/ah-ini-admin-yh/projects'
+    | '/ah-ini-admin-yh/settings'
+    | '/ah-ini-admin-yh/social-media'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/ah-ini-admin-yh'
     | '/blog/$catId'
     | '/projects/$projectId'
     | '/blog'
     | '/gallery'
-    | '/ini-admin-yh'
     | '/projects'
+    | '/ah-ini-admin-yh/dashboard'
     | '/blog/post/$slug'
+    | '/ah-ini-admin-yh/projects/add'
+    | '/ah-ini-admin-yh/fursona'
+    | '/ah-ini-admin-yh/gallery'
+    | '/ah-ini-admin-yh/projects'
+    | '/ah-ini-admin-yh/settings'
+    | '/ah-ini-admin-yh/social-media'
   id:
     | '__root__'
     | '/'
+    | '/_admin/ah-ini-admin-yh'
     | '/blog/$catId'
     | '/projects/$projectId'
     | '/blog/'
     | '/gallery/'
-    | '/ini-admin-yh/'
     | '/projects/'
+    | '/_admin/ah-ini-admin-yh/dashboard'
     | '/blog/post/$slug'
+    | '/_admin/ah-ini-admin-yh/projects/add'
+    | '/_admin/ah-ini-admin-yh/fursona/'
+    | '/_admin/ah-ini-admin-yh/gallery/'
+    | '/_admin/ah-ini-admin-yh/projects/'
+    | '/_admin/ah-ini-admin-yh/settings/'
+    | '/_admin/ah-ini-admin-yh/social-media/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminAhIniAdminYhRouteRoute: typeof AdminAhIniAdminYhRouteRouteWithChildren
   BlogCatIdRoute: typeof BlogCatIdRoute
   ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
   BlogIndexRoute: typeof BlogIndexRoute
   GalleryIndexRoute: typeof GalleryIndexRoute
-  IniAdminYhIndexRoute: typeof IniAdminYhIndexRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
   BlogPostSlugRoute: typeof BlogPostSlugRoute
 }
@@ -148,13 +239,6 @@ declare module '@tanstack/react-router' {
       path: '/projects'
       fullPath: '/projects'
       preLoaderRoute: typeof ProjectsIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ini-admin-yh/': {
-      id: '/ini-admin-yh/'
-      path: '/ini-admin-yh'
-      fullPath: '/ini-admin-yh'
-      preLoaderRoute: typeof IniAdminYhIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery/': {
@@ -185,6 +269,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogCatIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_admin/ah-ini-admin-yh': {
+      id: '/_admin/ah-ini-admin-yh'
+      path: '/ah-ini-admin-yh'
+      fullPath: '/ah-ini-admin-yh'
+      preLoaderRoute: typeof AdminAhIniAdminYhRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/post/$slug': {
       id: '/blog/post/$slug'
       path: '/blog/post/$slug'
@@ -192,16 +283,92 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogPostSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_admin/ah-ini-admin-yh/dashboard': {
+      id: '/_admin/ah-ini-admin-yh/dashboard'
+      path: '/dashboard'
+      fullPath: '/ah-ini-admin-yh/dashboard'
+      preLoaderRoute: typeof AdminAhIniAdminYhDashboardRouteImport
+      parentRoute: typeof AdminAhIniAdminYhRouteRoute
+    }
+    '/_admin/ah-ini-admin-yh/social-media/': {
+      id: '/_admin/ah-ini-admin-yh/social-media/'
+      path: '/social-media'
+      fullPath: '/ah-ini-admin-yh/social-media'
+      preLoaderRoute: typeof AdminAhIniAdminYhSocialMediaIndexRouteImport
+      parentRoute: typeof AdminAhIniAdminYhRouteRoute
+    }
+    '/_admin/ah-ini-admin-yh/settings/': {
+      id: '/_admin/ah-ini-admin-yh/settings/'
+      path: '/settings'
+      fullPath: '/ah-ini-admin-yh/settings'
+      preLoaderRoute: typeof AdminAhIniAdminYhSettingsIndexRouteImport
+      parentRoute: typeof AdminAhIniAdminYhRouteRoute
+    }
+    '/_admin/ah-ini-admin-yh/projects/': {
+      id: '/_admin/ah-ini-admin-yh/projects/'
+      path: '/projects'
+      fullPath: '/ah-ini-admin-yh/projects'
+      preLoaderRoute: typeof AdminAhIniAdminYhProjectsIndexRouteImport
+      parentRoute: typeof AdminAhIniAdminYhRouteRoute
+    }
+    '/_admin/ah-ini-admin-yh/gallery/': {
+      id: '/_admin/ah-ini-admin-yh/gallery/'
+      path: '/gallery'
+      fullPath: '/ah-ini-admin-yh/gallery'
+      preLoaderRoute: typeof AdminAhIniAdminYhGalleryIndexRouteImport
+      parentRoute: typeof AdminAhIniAdminYhRouteRoute
+    }
+    '/_admin/ah-ini-admin-yh/fursona/': {
+      id: '/_admin/ah-ini-admin-yh/fursona/'
+      path: '/fursona'
+      fullPath: '/ah-ini-admin-yh/fursona'
+      preLoaderRoute: typeof AdminAhIniAdminYhFursonaIndexRouteImport
+      parentRoute: typeof AdminAhIniAdminYhRouteRoute
+    }
+    '/_admin/ah-ini-admin-yh/projects/add': {
+      id: '/_admin/ah-ini-admin-yh/projects/add'
+      path: '/projects/add'
+      fullPath: '/ah-ini-admin-yh/projects/add'
+      preLoaderRoute: typeof AdminAhIniAdminYhProjectsAddRouteImport
+      parentRoute: typeof AdminAhIniAdminYhRouteRoute
+    }
   }
 }
 
+interface AdminAhIniAdminYhRouteRouteChildren {
+  AdminAhIniAdminYhDashboardRoute: typeof AdminAhIniAdminYhDashboardRoute
+  AdminAhIniAdminYhProjectsAddRoute: typeof AdminAhIniAdminYhProjectsAddRoute
+  AdminAhIniAdminYhFursonaIndexRoute: typeof AdminAhIniAdminYhFursonaIndexRoute
+  AdminAhIniAdminYhGalleryIndexRoute: typeof AdminAhIniAdminYhGalleryIndexRoute
+  AdminAhIniAdminYhProjectsIndexRoute: typeof AdminAhIniAdminYhProjectsIndexRoute
+  AdminAhIniAdminYhSettingsIndexRoute: typeof AdminAhIniAdminYhSettingsIndexRoute
+  AdminAhIniAdminYhSocialMediaIndexRoute: typeof AdminAhIniAdminYhSocialMediaIndexRoute
+}
+
+const AdminAhIniAdminYhRouteRouteChildren: AdminAhIniAdminYhRouteRouteChildren =
+  {
+    AdminAhIniAdminYhDashboardRoute: AdminAhIniAdminYhDashboardRoute,
+    AdminAhIniAdminYhProjectsAddRoute: AdminAhIniAdminYhProjectsAddRoute,
+    AdminAhIniAdminYhFursonaIndexRoute: AdminAhIniAdminYhFursonaIndexRoute,
+    AdminAhIniAdminYhGalleryIndexRoute: AdminAhIniAdminYhGalleryIndexRoute,
+    AdminAhIniAdminYhProjectsIndexRoute: AdminAhIniAdminYhProjectsIndexRoute,
+    AdminAhIniAdminYhSettingsIndexRoute: AdminAhIniAdminYhSettingsIndexRoute,
+    AdminAhIniAdminYhSocialMediaIndexRoute:
+      AdminAhIniAdminYhSocialMediaIndexRoute,
+  }
+
+const AdminAhIniAdminYhRouteRouteWithChildren =
+  AdminAhIniAdminYhRouteRoute._addFileChildren(
+    AdminAhIniAdminYhRouteRouteChildren,
+  )
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminAhIniAdminYhRouteRoute: AdminAhIniAdminYhRouteRouteWithChildren,
   BlogCatIdRoute: BlogCatIdRoute,
   ProjectsProjectIdRoute: ProjectsProjectIdRoute,
   BlogIndexRoute: BlogIndexRoute,
   GalleryIndexRoute: GalleryIndexRoute,
-  IniAdminYhIndexRoute: IniAdminYhIndexRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
   BlogPostSlugRoute: BlogPostSlugRoute,
 }
